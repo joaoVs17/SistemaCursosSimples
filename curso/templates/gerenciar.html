@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}
+  Gerenciar
+{% endblock title %}
+
+{% block content %}
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding-left: 30px;padding-right: 30px;">
+        <a class="navbar-brand" href="#">Vendinha de Cursos</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+            <a class="nav-item nav-link" href="{% url 'cursos' %}">Cursos</a>
+            <a class="nav-item nav-link active" href="#" style="margin-left: 50rem;">Gerenciar cursos</a>
+          </div>
+        </div>
+      </nav>
+  </header>
+  <div class="container mt-5">
+    <a class="btn btn-success mb-5" href="{% url 'add_curso' %}">Adicionar</a>
+    <h1>Cursos</h1>
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for curso in cursos %}
+                <tr>
+                    <td>{{curso.nome}}</td>
+                    <td>
+                        <a href="{% url 'editar' curso.pk %}" class="btn btn-info">Editar</a>
+                        <a href="{% url 'deletar' curso.pk %}" class="btn btn-warning">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+  
+{% endblock content %}

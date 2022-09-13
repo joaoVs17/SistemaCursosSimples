@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+  Adicionar curso
+{% endblock title %}
+
+{% block content %}
+  <div class="container mt-5 b form-control">
+    <div class="box">
+        <form action="" class="form" method="POST">
+            {% csrf_token %}
+            <h1 class="title">Adicionar curso</h1>
+            <label for="nome" class="col-form-label">Nome do curso:</label>
+            <input name="nome" type="text" placeholder="Curso" class="form-control" required>
+            <label for="descricao" class="col-form-label">Descrição do curso:</label>
+            <input name="descricao" type="text" placeholder="Descrição" class="form-control" required>
+            <div class="form-group mt-5 mb-5">
+                <input type="submit" name="" id="" class="btn btn-success" value="Enviar">
+                <a href="{% url 'gerenciar' %}" class="btn btn-danger">Cancelar</a>
+            </div>
+        </form>
+    </div>
+  </div>
+{% endblock content %}
